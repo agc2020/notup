@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connect.php';
-require_once 'vendor/autoload.php';
+
 use \Firebase\JWT\JWT;
 
 $secret_key = "SUA_CHAVE_SECRETA";
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
             "exp" => time() + 3600
         );
 
-        $jwt = JWT::encode($payload, $secret_key);
+        $jwt = JWT::encode($payload, $secret_key, 'HS256');
         echo $jwt;
     } else {
         echo "Senha incorreta";
@@ -33,4 +33,3 @@ if ($result->num_rows > 0) {
 } else {
     echo "Usuário não encontrado";
 }
-?>

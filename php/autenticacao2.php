@@ -13,7 +13,7 @@ if (!$jwt) {
 }
 
 try {
-    $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+    $decoded = JWT::decode($jwt, $secret_key);
     // Token válido, o usuário está autenticado
 } catch (Exception $e) {
     http_response_code(401);
