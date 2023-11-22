@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
             "exp" => time() + 3600
         ];
 
-        $jwt = JWT::encode($payload, $secret_key);
+        $jwt = JWT::encode($payload, $secret_key, array('HS256'));
         echo $jwt;
     } else {
         echo "Senha incorreta";
