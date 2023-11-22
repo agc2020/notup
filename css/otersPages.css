@@ -1,0 +1,44 @@
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.session1_background, .session3_background{
+    flex: 1;
+    /* background: #1A1A1A; */
+}
+
+.background_text{
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    height: 100%;
+    position: relative;
+}
+
+.background_text .bg{
+    font-size: 10rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+.background_text h2{
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 32px;
+    z-index: 2;
+    text-align: center;
+}
+
+#modal_title{
+    font-weight: 600;
+    font-size: 42px;
+}

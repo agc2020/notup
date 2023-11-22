@@ -1,0 +1,86 @@
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto";
+  color: #FFF;
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url(../public/background.jpg);
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+
+
+.signin {
+  background-color: #1A1A1A;
+  width: 50%;
+  margin-left: auto;
+  padding: 15px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.login_title{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#exampleFormControlInput1, #exampleFormControlInput2{
+  background-color: #1c1e1f;
+  border: 1px solid #726a5d;
+  color: #d1cdc7;
+  margin-bottom: 20px;
+}
+
+#exampleFormControlInput1::placeholder, #exampleFormControlInput2::placeholder {
+  color: #696969;
+}
+
+.button_form{
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+.alert {
+  color: #ea868f;
+  background: #2c0b0e;
+  border: 1px solid #842029;
+  padding: 10px;
+  transition: 1s;
+}
+
+#alert{
+  display: none !important;
+}
+
+#alert.visible{
+  display: flex !important;
+}
+
+#alert.animate{
+  animation: alert 0.5s forwards;
+}
+
+@keyframes alert {
+  0%,50%{
+    transform: translateX(-4px);
+  }
+  25%,75%{
+    transform: translateX(4px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
