@@ -4,7 +4,7 @@ require_once 'autenticacao2.php';
 
 $titulo = $_POST['titulo'] ?? '';
 $conteudo = $_POST['conteudo'] ?? '';
-$usuario_id = $decoded->user_id; // Obtido do token JWT
+$usuario_id = $decoded->user_id;
 
 $sql = "INSERT INTO Notas (titulo, conteudo, usuario_id) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);

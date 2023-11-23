@@ -1,18 +1,17 @@
 document.getElementById("submit").addEventListener("click", handleLogin, false);
 
-function handleLogin(e){
-  e.preventDefault();
-  let email = document.getElementById("exampleFormControlInput1").value;
-  let password = document.getElementById("exampleFormControlInput2").value;
+function handleLogin(e) {
+  let email = document.getElementById("idMail").value;
+  let password = document.getElementById("idPass").value;
   
-  if(!email || !password){
+  if (!email || !password) {
+    e.preventDefault();
     let alert = document.getElementById("alert");
     alert.classList.add("visible");
-    alert.classList.remove("animate")
     setTimeout(() => {
-      alert.classList.add("animate")
-    }, 10)
-  }else{
-    console.log("passou na validação")
+      alert.classList.remove("visible");
+    }, 3000);
+  } else {
+    console.log("Passou na validação");
   }
 }

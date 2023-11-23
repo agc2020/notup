@@ -16,15 +16,14 @@
 </head>
 <body>
   <div class="background" ></div>
-  <form action="verificar_login.php" method="post" class="signin">
-    <h3 class="login_title">SIGN IN</h3>
+  <form action="../php/criar_usuario.php" method="post" class="signin">
+    <h3 class="login_title">CADASTRAR</h3>
+
+    <label for="email" class="form-label">Endereço de Email</label>
+    <input type="email" class="form-control" name="email" placeholder="nome@exemplo.com">
   
-    <label for="email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="idMail" name="email" placeholder="name@example.com">
-  
-    <label for="senha" class="form-label">Password</label>
-    <input type="password" class="form-control" id="idPass" name="senha" placeholder="password">
-  
+    <label for="senha" class="form-label">Senha</label>
+    <input type="password" class="form-control" name="senha" placeholder="senha">
 
       <div id="alert" class="alert alert-danger d-flex align-items-center" role="alert">
         <svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -35,7 +34,7 @@
         </div>
       </div>
 
-      <button id="submit" type="submit" class="btn btn-light button_form">Send</button>
+      <button id="submit" type="submit" class="btn btn-light button_form">Cadastrar</button>
     </form>
 
     
