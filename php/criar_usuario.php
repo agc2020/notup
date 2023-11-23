@@ -5,13 +5,24 @@ $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $senha = $_POST['senha'];
 $senha_criptografada = password_hash($senha, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO Usuarios (email, senha_criptografada) VALUES (?, ?)";
+$sql = "SELECT id FROM Usuarios WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $email, $senha_criptografada);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if ($stmt->execute()) {
-    echo "Usuário criado com sucesso";
+if ($result->num_rows > 0) {
+    echo "Usuário já cadastrado com este e-mail.";
+    exit;
 } else {
-    echo "Erro ao criar usuário";
+    $sql = "INSERT INTO Usuarios (email, senha_criptografada) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $email, $senha_criptografada);
+
+    if ($stmt->execute()) {
+        echo "Usuário criado com sucesso";
+    } else {
+        echo "Erro ao criar usuário";
+    }
 }
 ?>
