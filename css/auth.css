@@ -36,14 +36,14 @@ body {
   margin-bottom: 30px;
 }
 
-#exampleFormControlInput1, #exampleFormControlInput2{
+#idMail, #idPass{
   background-color: #1c1e1f;
   border: 1px solid #726a5d;
   color: #d1cdc7;
   margin-bottom: 20px;
 }
 
-#exampleFormControlInput1::placeholder, #exampleFormControlInput2::placeholder {
+#idMail::placeholder, #idPass::placeholder {
   color: #696969;
 }
 
@@ -71,6 +71,28 @@ body {
 
 #alert.animate{
   animation: alert 0.5s forwards;
+}
+
+.form_footer{
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #979187;
+  visibility: hidden;
+  height: 0;
+}
+
+.form_footer.visible{
+  display: flex;
+  height: auto;
+  margin-top: 10px;
+}
+
+.form_footer span {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #c1c1b2;
 }
 
 @keyframes alert {
