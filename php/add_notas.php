@@ -14,5 +14,5 @@ if ($stmt->execute()) {
     echo "Nota adicionada com sucesso";
 } else {
     echo "Erro ao adicionar nota";
-}
+} 
 ?>
