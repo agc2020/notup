@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
 
         $jwt = JWT::encode($payload, $secret_key, 'HS256');
         http_response_code(200);
-        echo $jwt;
+        echo "<script>window.location.href = '../pages/dashboard.html';</script>";
     } else {
         http_response_code(401);
         echo "Credenciais inválidas.";
