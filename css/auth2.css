@@ -36,14 +36,18 @@ body {
   margin-bottom: 30px;
 }
 
-#idMail, #idPass{
+#idMail, #idPass, #idName{
   background-color: #1c1e1f;
   border: 1px solid #726a5d;
   color: #d1cdc7;
   margin-bottom: 20px;
 }
 
-#idMail::placeholder, #idPass::placeholder {
+#idName{
+  display: none;
+}
+
+#idMail::placeholder, #idMail::placeholder, #idName::placeholder {
   color: #696969;
 }
 

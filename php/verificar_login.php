@@ -13,14 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($senha)) {
         http_response_code(400);
         echo "Senha não fornecida.";
+        setcookie("Error", "Password not provided.", time()+3, "/");
+        header("Location: /notup/pages/auth.html");
         exit;
     }
-
-    $sql = "SELECT id, senha_criptografada FROM usuarios WHERE email = ?";
+    
+    $senha_criptografada = password_hash($senha, PASSWORD_DEFAULT);
+    $sql = "SELECT id, senha_criptografada FROM usuarios WHERE email = ?;"; //AND senha_criptografada = ?
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         http_response_code(500);
         echo "Erro na preparação da consulta.";
+        setcookie("Error", "Error preparing the query.", time()+3, "/");
+        header("Location: /notup/pages/auth.html");
         exit;
     }
 
@@ -28,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!$stmt->execute()) {
         http_response_code(500);
         echo "Erro ao executar a consulta.";
+        setcookie("Error", "Error executing the query.", time()+3, "/");
+        header("Location: /notup/pages/auth.html");
         exit;
     }
 
@@ -35,16 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($senha, $row['senha_criptografada'])) {
-
             http_response_code(200);
-            echo "Login autorizado";
+            session_start();
+            $_SESSION['email'] = $email;
+            header("Location: /notup/pages");
         } else {
             http_response_code(401);
             echo "Credenciais inválidas.";
+            setcookie("Error", "Invalid credentials.", time()+3, "/");
+            header("Location: /notup/pages/auth.html");
         }
     } else {
         http_response_code(401);
         echo "Credenciais inválidas.";
+        echo $senha_criptografada;
+        setcookie("Error", "Invalid credentials.", time()+3, "/");
+        header("Location: /notup/pages/auth.html");
     }
 
     $stmt->close();

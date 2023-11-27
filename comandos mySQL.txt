@@ -1,5 +1,6 @@
 CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_usuario VARCHAR(255) NOT NULL
     email VARCHAR(255) NOT NULL UNIQUE,
     senha_criptografada VARCHAR(255) NOT NULL
 );
