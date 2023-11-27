@@ -1,0 +1,115 @@
+/* Estilos Base */
+html, body,* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+}
+
+body{
+  background-color: #1A1A1A;
+  color: #FFFFFF; /* Assegura que o texto padrão seja branco */
+}
+
+/* Barra de Navegação */
+.top_bar {
+  background-color: #280D3D;
+  padding: 15px 0; /* Espaçamento vertical aumentado */
+}
+
+/* Logo e Navegação */
+.top_bar img {
+  width: 125px;
+}
+
+.top_bar nav a {
+  margin: 0 15px; /* Espaçamento aumentado entre os links */
+  font-size: 18px; /* Tamanho de fonte reduzido para melhor ajuste */
+}
+
+/* Seção de Boas-Vindas */
+.session1_background {
+  background: url(../public/background1.png) center/cover no-repeat;
+  min-height: 500px;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+}
+
+.session1_wrapper {
+  width: 90%;
+  max-width: 1200px; /* Largura máxima para evitar linhas muito longas de texto */
+  margin: auto; /* Centraliza o wrapper */
+}
+
+.session1_text_card {
+  max-width: 800px; /* Ajuste de largura para legibilidade */
+  margin: auto; /* Centraliza o cartão de texto */
+  text-align: center; /* Texto centralizado */
+}
+
+/* Estilos para Gestão de Conta e Notas */
+.comunity_card, .session2_background {
+  background-color: rgba(40, 13, 61, 0.85); /* Fundo semi-transparente */
+  border-radius: 15px; /* Bordas arredondadas */
+  margin: 20px auto; /* Margem uniforme */
+  padding: 20px; /* Espaçamento interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos para inputs de texto e áreas de texto */
+.input_wrapper input[type="text"],
+.input_wrapper textarea {
+  width: 100%; /* Define a largura para ser a total do container */
+  padding: 10px; /* Espaçamento interno para melhor legibilidade */
+  border: 2px solid #6C15AF; /* Estilo da borda */
+  background-color: transparent; /* Fundo transparente */
+  color: #FFFFFF; /* Cor do texto */
+  margin-bottom: 15px; /* Espaço abaixo do input */
+  box-sizing: border-box; /* Garante que o padding e border não aumentem a largura */
+}
+
+/* Estilos específicos para a área de texto */
+.input_wrapper textarea {
+  height: 4em; /* Altura ajustada para duas linhas de texto */
+  resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
+
+/* Modifique o seletor conforme necessário para corresponder ao seu HTML */
+
+
+/* Formulários e Botões */
+input, button {
+  width: calc(100% - 20px); /* Largura completa com ajuste de padding */
+  padding: 10px;
+  margin-bottom: 15px; /* Mais espaço entre elementos */
+  border: 2px solid #6C15AF; /* Borda destacada */
+  background: none;
+  color: #E4FF3F;
+  font-size: 16px; /* Tamanho de fonte padronizado */
+}
+
+button {
+  background: #6C15AF;
+  color: white;
+  transition: background-color 0.3s;
+  cursor: pointer; /* Indica que o botão é clicável */
+}
+
+button:hover {
+  background: #7E2FC9; /* Cor mais clara no hover */
+}
+
+/* Rodapé */
+footer {
+  background-color: #280D3D;
+  padding: 20px;
+}
+
+footer img {
+  width: 170px;
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+  /* Ajustes para dispositivos móveis */
+}

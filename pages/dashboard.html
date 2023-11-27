@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../css/dashboard.css">
+      <title>Dashboard - Notup</title>
+</head>
+<body>
+  <div class="top_bar">
+    <!-- [Barra de Navegação] -->
+  </div>
+
+  <div class="session1_background">
+    <div class="session1_wrapper">
+      <div class="session1_text_card">
+        <h1 class="session1_title">Bem-Vindo ao Seu Dashboard</h1>
+        <p class="session1_description">Gerencie suas notas e sua conta.</p>
+      </div>
+
+      <!-- Formulário para Adicionar Nota -->
+      <form id="addNoteForm">
+        <input type="text" placeholder="Título da Nota" id="noteTitle">
+        <textarea placeholder="Conteúdo da Nota" id="noteContent"></textarea>
+        <button type="submit">Adicionar Nota</button>
+      </form>
+
+      <!-- Área para exibir notas -->
+      <div id="notesList">
+        <!-- Notas adicionadas serão exibidas aqui -->
+      </div>
+    </div>
+  </div>
+
+  <div class="comunity_card">
+    <h2 class="comunity_title">Gerenciamento de Conta</h2>
+    <div class="account_management">
+      <!-- Formulário para Alterar Senha -->
+      <form id="changePasswordForm">
+        <input type="password" placeholder="Senha Atual" id="currentPassword">
+        <input type="password" placeholder="Nova Senha" id="newPassword">
+        <button type="submit">Alterar Senha</button>
+      </form>
+
+      <!-- Formulário para Excluir Conta -->
+      <form id="deleteAccountForm">
+        <button type="submit">Excluir Conta</button>
+      </form>
+    </div>
+  </div>
+  
+  <footer>
+    <!-- [Rodapé] -->
+  </footer>
+  <script src="../js/dashboard.js"></script>
+</body>
