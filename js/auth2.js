@@ -1,5 +1,6 @@
 // adicionando eventos
 document.getElementById("submit").addEventListener("click", handleLogin, false);
+console.log("🚀 ~ file: auth2.js:3 ~ submit:", "submit")
 const toggle_buttons = document.getElementsByClassName("toggle_button");
 for (button of toggle_buttons) button.addEventListener("click", toggle_form, false);  
 

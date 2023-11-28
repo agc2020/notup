@@ -19,6 +19,9 @@
   <form id="form" action="../php/verificar_login.php" method="post" class="signin">
     <h3 class="login_title">SIGN IN</h3>
 
+    <label for="name" class="form-label form-name">Name</label>
+    <input type="text" class="form-control form-name" id="idName" name="name" placeholder="Jhon Phill">
+
     <label for="email" class="form-label">Email address</label>
     <input type="email" class="form-control" id="idMail" name="email" placeholder="name@example.com">
 
@@ -34,6 +37,6 @@
     <div class="form_footer">Already have an account?<span class="toggle_button"> Signin</span>.</div>
   </form>
 
-  <!-- [Scripts] -->
+  <script src="../js/auth2.js"></script>
 </body>
 </html>
