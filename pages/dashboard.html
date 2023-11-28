@@ -32,7 +32,20 @@
 
       <!-- Área para exibir notas -->
       <div id="notesList">
-        <!-- Notas adicionadas serão exibidas aqui -->
+        <!-- PHP Script para carregar notas existentes -->
+        <php>require_once 'db_connect.php';
+          session_start();
+      
+          $email = $_SESSION['email'];
+          $sql = "SELECT * FROM Notas WHERE usuario_id = (SELECT id FROM Usuarios WHERE email = ?)";
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("s", $email);
+          $stmt->execute();
+          $result = $stmt->get_result();
+      
+          while ($row = $result->fetch_assoc()) {
+              echo "<div class='note'><h3>" . htmlspecialchars($row['titulo']) . "</h3><p>" . htmlspecialchars($row['conteudo']) . "</p></div>";
+          }</php>
       </div>
     </div>
   </div>

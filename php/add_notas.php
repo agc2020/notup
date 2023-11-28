@@ -1,18 +1,40 @@
 <?php
+session_start();
 require_once 'db_connect.php';
-require_once 'autenticacao2.php';
 
-$titulo = $_POST['titulo'] ?? '';
-$conteudo = $_POST['conteudo'] ?? '';
-$usuario_id = $decoded->user_id;
+if (!isset($_SESSION['email']) || empty($_POST['titulo']) || empty($_POST['conteudo'])) {
+    header("Location: ../pages/dashboard.html?error=emptyfields");
+    exit();
+}
 
-$sql = "INSERT INTO Notas (titulo, conteudo, usuario_id) VALUES (?, ?, ?)";
+$titulo = $_POST['titulo'];
+$conteudo = $_POST['conteudo'];
+$email = $_SESSION['email'];
+
+// Obter ID do usuário
+$sql = "SELECT id FROM Usuarios WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssi", $titulo, $conteudo, $usuario_id);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $usuario_id = $row['id'];
 
-if ($stmt->execute()) {
-    echo "Nota adicionada com sucesso";
+    // Inserir a nota
+    $sql = "INSERT INTO Notas (titulo, conteudo, usuario_id) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssi", $titulo, $conteudo, $usuario_id);
+
+    if ($stmt->execute()) {
+        header("Location: ../pages/dashboard.html?success=noteadded");
+        exit();
+    } else {
+        header("Location: ../pages/dashboard.html?error=sqlerror");
+        exit();
+    }
 } else {
-    echo "Erro ao adicionar nota";
-} 
+    header("Location: ../pages/dashboard.html?error=nouser");
+    exit();
+}
 ?>
