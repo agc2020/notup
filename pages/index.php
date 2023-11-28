@@ -19,7 +19,7 @@
     session_start();
     if (isset($_SESSION['email'])) {
       setcookie("Error", "User not logged.", time()+3, "/");
-      header("Location: /notup/pages/auth.html");
+      header("Location: ../pages/auth.html");
       exit;
     }
     $stmt->bind_param("s", $_SESSION['email']);

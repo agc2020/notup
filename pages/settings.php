@@ -19,7 +19,7 @@
     session_start();
     if (isset($_SESSION['email'])) {
       setcookie("Error", "User not logged.", time()+3, "/");
-      header("Location: /notup/pages/auth.html");
+      header("Location: ../pages/auth.html");
       exit;
     }
     $stmt->bind_param("s", $_SESSION['email']);
@@ -28,7 +28,7 @@
       http_response_code(500);
       echo "Erro ao executar a consulta.";
       setcookie("Error", "Error executing the query.", time()+3, "/");
-      header("Location: ../notup/pages");
+      header("Location: ../pages");
       exit;
     }
     $result = $stmt->get_result();
