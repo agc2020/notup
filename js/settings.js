@@ -1,4 +1,5 @@
 document.getElementById("save").addEventListener("click", showConfirmModal, false);
+document.getElementById("delete").addEventListener("click", deleteAccount, false);
 document.getElementById("confirm").addEventListener("click", alterUserData, false);
 
 function showConfirmModal(){
@@ -22,4 +23,8 @@ function alterUserData(){
     formulario.appendChild(novoCampoSenha);
     formulario.submit();
   }
+}
+
+function deleteAccount(){
+  window.location.href = "../php/apagar_usuario.php";
 }
