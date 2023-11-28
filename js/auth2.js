@@ -5,7 +5,10 @@ for (button of toggle_buttons) button.addEventListener("click", toggle_form, fal
 
 // colentando cookies de erros
 var errorCokie = decodeURIComponent(document.cookie).split("=")[1];
-if(errorCokie){showNotify(errorCokie)}
+if(errorCokie){
+  console.log("🚀 ~ file: auth2.js:9 ~ errorCokie:", errorCokie)
+  showNotify(errorCokie)
+}
 
 function handleLogin(event) {
   let email = document.getElementById("idMail").value;

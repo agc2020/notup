@@ -14,12 +14,13 @@ body {
   height: 100vh;
   background: url(../public/background.jpg);
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
 }
 
 
 .signin {
+  z-index: 2;
   background-color: #1A1A1A;
   width: 50%;
   margin-left: auto;
