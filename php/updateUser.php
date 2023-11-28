@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
     $stmt2->bind_param("sss", $senha_criptografada, $NewEmail, $email);
     if($stmt2->execute()){
       $_SESSION['email'] = $NewEmail;
-      header("Location: /notup/pages/settings.php");
+      header("Location: ../pages/settings.php");
     }
   } 
 }
