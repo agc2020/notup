@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connect.php';
-
+session_start();
 if (!isset($_SESSION['email'])) {
     header("Location: ../pages/auth.html");
     exit();

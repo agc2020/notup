@@ -66,7 +66,10 @@
     <div class="workspace settings_workspace">
       <div class="title_settings">
         <h2><?php echo $row['nome_usuario']?> </h2>
-        <button id="save" class="save">Salvar</button>
+        <div>
+          <button id="save" class="save">Salvar</button>
+          <button id="delete" class="delete">Excluir conta</button>
+        </div>
       </div>
 
       <form method="post" id="form_update" action="../php/updateUser.php">
