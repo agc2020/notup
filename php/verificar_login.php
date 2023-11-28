@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             http_response_code(200);
             session_start();
             $_SESSION['email'] = $email;
-            header("Location: ../pages");
+            header("Location: ../pages/index.php");
         } else {
             http_response_code(401);
             echo "Credenciais inválidas.";

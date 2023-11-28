@@ -16,12 +16,6 @@
     require_once '../php/db_connect.php';
     $sql = "SELECT * FROM Usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
-    session_start();
-    if (isset($_SESSION['email'])) {
-      setcookie("Error", "User not logged.", time()+3, "/");
-      header("Location: ../pages/auth.html");
-      exit;
-    }
     $stmt->bind_param("s", $_SESSION['email']);
     
     if (!$stmt->execute()) {

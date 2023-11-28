@@ -16,8 +16,7 @@ function handleLogin(event) {
     showNotify("some fields are null!", event);
   }else{
     var formulario = document.getElementById("form");
-    console.log("🚀 ~ file: auth2.js:25 ~ handleLogin ~ formulario:", formulario)
-    // formulario.submit()
+    formulario.submit()
   }
 }
 
