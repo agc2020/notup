@@ -3,12 +3,6 @@ document.getElementById("submit").addEventListener("click", handleLogin, false);
 const toggle_buttons = document.getElementsByClassName("toggle_button");
 for (button of toggle_buttons) button.addEventListener("click", toggle_form, false);  
 
-// colentando cookies de erros
-var errorCokie = decodeURIComponent(document.cookie).split("=")[1];
-if(errorCokie){
-  console.log("🚀 ~ file: auth2.js:9 ~ errorCokie:", errorCokie)
-  showNotify(errorCokie)
-}
 
 function handleLogin(event) {
   let email = document.getElementById("idMail").value;
@@ -22,7 +16,8 @@ function handleLogin(event) {
     showNotify("some fields are null!", event);
   }else{
     var formulario = document.getElementById("form");
-    formulario.submit()
+    console.log("🚀 ~ file: auth2.js:25 ~ handleLogin ~ formulario:", formulario)
+    // formulario.submit()
   }
 }
 
