@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     if ($stmt->execute()) {
         session_start();
         $_SESSION['email'] = $email;
-        header("Location: ../pages");
+        header("Location: ../pages/index.php");
         exit();
     } else {
         header("Location: ../pages/auth.html?error=sqlerror");
