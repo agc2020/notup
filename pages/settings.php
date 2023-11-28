@@ -23,7 +23,7 @@
       http_response_code(500);
       echo "Erro ao executar a consulta.";
       setcookie("Error", "Error executing the query.", time()+3, "/");
-      header("Location: /notup/pages");
+      header("Location: ../notup/pages");
       exit;
     }
     $result = $stmt->get_result();

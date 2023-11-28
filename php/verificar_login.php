@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(400);
         echo "Senha não fornecida.";
         setcookie("Error", "Password not provided.", time()+3, "/");
-        header("Location: /notup/pages/auth.html");
+        header("Location: ../pages/auth.html");
         exit;
     }
     
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(500);
         echo "Erro na preparação da consulta.";
         setcookie("Error", "Error preparing the query.", time()+3, "/");
-        header("Location: /notup/pages/auth.html");
+        header("Location: ../pages/auth.html");
         exit;
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(500);
         echo "Erro ao executar a consulta.";
         setcookie("Error", "Error executing the query.", time()+3, "/");
-        header("Location: /notup/pages/auth.html");
+        header("Location: ../pages/auth.html");
         exit;
     }
 
@@ -45,19 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             http_response_code(200);
             session_start();
             $_SESSION['email'] = $email;
-            header("Location: /notup/pages");
+            header("Location: ../pages");
         } else {
             http_response_code(401);
             echo "Credenciais inválidas.";
             setcookie("Error", "Invalid credentials.", time()+3, "/");
-            header("Location: /notup/pages/auth.html");
+            header("Location: ../pages/auth.html");
         }
     } else {
         http_response_code(401);
         echo "Credenciais inválidas.";
         echo $senha_criptografada;
         setcookie("Error", "Invalid credentials.", time()+3, "/");
-        header("Location: /notup/pages/auth.html");
+        header("Location: ../pages/auth.html");
     }
 
     $stmt->close();

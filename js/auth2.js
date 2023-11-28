@@ -10,6 +10,34 @@ if(errorCokie){
   showNotify(errorCokie)
 }
 
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("submit").addEventListener("click", handleCadastro, false);
+});
+
+function handleCadastro(e) {
+  e.preventDefault(); 
+
+  let name = document.getElementById("idName").value;
+  let email = document.getElementById("idMail").value;
+  let senha = document.getElementById("idPass").value;
+
+  let alerta = document.getElementById("alert");
+  if (!name || !email || !senha) {
+      alerta.style.display = "block";
+      alerta.textContent = "Todos os campos são obrigatórios!";
+      return;
+  }
+
+  document.getElementById("formCadastro").submit();
+}
+
+document.querySelectorAll(".form-control").forEach(item => {
+  item.addEventListener("input", () => {
+      document.getElementById("alert").style.display = "none";
+  });
+});
+
 function handleLogin(event) {
   let email = document.getElementById("idMail").value;
   let password = document.getElementById("idPass").value;
