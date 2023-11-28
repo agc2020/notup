@@ -16,6 +16,7 @@
     require_once '../php/db_connect.php';
     $sql = "SELECT * FROM Usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
+    session_start();
     $stmt->bind_param("s", $_SESSION['email']);
     
     if (!$stmt->execute()) {
@@ -29,6 +30,7 @@
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
     }
+
   ?>
 
   <div class="top_bar">
