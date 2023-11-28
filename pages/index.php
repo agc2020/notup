@@ -1,3 +1,32 @@
+<?php 
+require_once '../php/db_connect.php';
+session_start();
+
+if (!isset($_SESSION['email'])) {
+  setcookie("Error", "User not logged.", time()+3, "/");
+  header("Location: ../pages/auth.html");
+  exit;
+}
+
+$email = $_SESSION['email'];
+
+$sql = "SELECT * FROM Usuarios WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+
+if (!$stmt->execute()) {
+  http_response_code(500);
+  echo "Erro ao executar a consulta.";
+  setcookie("Error", "Error executing the query.", time()+3, "/");
+  header("Location: ../pages/auth.html");
+  exit;
+}
+
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+  $row = $result->fetch_assoc();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,34 +41,6 @@
   <title>Notup</title>
 </head>
 <body>
-  <?php 
-    require_once '../php/db_connect.php';
-    $sql = "SELECT * FROM Usuarios WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    session_start();
-    if (isset($_SESSION['email'])) {
-      setcookie("Error", "User not logged.", time()+3, "/");
-      header("Location: ../pages/auth.html");
-      exit;
-    }
-    $stmt->bind_param("s", $_SESSION['email']);
-    
-    if (!$stmt->execute()) {
-      http_response_code(500);
-      echo "Erro ao executar a consulta.";
-      setcookie("Error", "Error executing the query.", time()+3, "/");
-      header("Location: ../pages/auth.html");
-      exit;
-    }
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-    }
-    if(!$row){
-      setcookie("Error", "User not logged.", time()+3, "/");
-      header("Location: ../pages/auth.html");
-    }
-  ?>
   <div class="top_bar">
     <img src="../public/logo_notup.png" alt="logo_notup">
     <nav></nav>
@@ -51,7 +52,7 @@
           <span class="material-symbols-outlined">settings</span>
           <p>settings</p>
         </a>
-        <a href="logout.php" class="option">
+        <a href="../pages/logout.php" class="option">
           <span class="material-symbols-outlined">logout</span>
           <p>logout</p>
         </a>
