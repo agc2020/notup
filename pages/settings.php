@@ -43,7 +43,7 @@
           <span class="material-symbols-outlined">settings</span>
           <p>settings</p>
         </a>
-        <a class="option">
+        <a href="logout.php" class="option">
           <span class="material-symbols-outlined">logout</span>
           <p>logout</p>
         </a>
@@ -63,19 +63,38 @@
       </div>
     </div>
 
-    <div class="workspace">
-      <h2><?php echo $row['nome_usuario']?></h2>
+    <div class="workspace settings_workspace">
+      <div class="title_settings">
+        <h2><?php echo $row['nome_usuario']?> </h2>
+        <button id="save" class="save">Salvar</button>
+      </div>
 
-      <label for="email" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="idMail" name="email" placeholder="name@example.com">
-
-      <label for="email" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="idMail" name="email" placeholder="name@example.com">
+      <form method="post" id="form_update" action="../php/updateUser.php">
+        <label for="email" class="form-label">Email address</label>
+        <input value="<?php echo htmlspecialchars($row['email']); ?>" type="email" class="form-control" id="idMail" name="email" placeholder="name@example.com">
+        
+        <label for="password" class="form-label">New PassWord</label>
+        <input type="password" class="form-control" id="idNewPass" name="newPassword">
+      </form>
 
     </div>
   </div>
 
+  <div id="confirm_modal" class="confirm_modal">
+    <h6>Confirme sua senha para salvar as alterações</h6>
+    <input type="password" class="form-control" id="idPass" name="password">
+    <button id="confirm" class="confirm">confirmar</button>
+  </div>
+
+  <div id="alert" class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="#ea868f"/>
+    </svg>
+    <div id="error_notify"></div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/settings.js"></script>
 </body>
 </html>

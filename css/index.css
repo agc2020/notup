@@ -9,7 +9,8 @@ html, body,* {
 }
 
 body{
-  background-color: #1A1A1A;
+  background-color: #141516;
+  min-height: 100vh;
 }
 
 a{
@@ -138,4 +139,84 @@ a{
 
 .workspace .note_card p{
   font-size: 16px;
+}
+
+.settings_workspace{
+  flex-direction: column;
+}
+
+.title_settings{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#idMail, #idPass, #idNewPass{
+  background-color: #1c1e1f;
+  border: 1px solid #726a5d;
+  color: #d1cdc7;
+  margin-bottom: 20px;
+}
+
+#idMail::placeholder, #idPass::placeholder, #idNewPass::placeholder{
+  color: #696969;
+}
+
+.save{
+  background-color: green;
+  border: none;
+  color: #FFF;
+  padding: 3px 20px;
+  border-radius: 5px;
+}
+
+.confirm_modal{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 450px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #222222;
+  display: none;
+  flex-direction: column;
+}
+
+.confirm_modal h6 {
+  width: 100%;
+  text-align: center;
+}
+
+.confirm{
+  background-color: green;
+  border: none;
+  color: #FFF;
+  padding: 3px 20px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.alert {
+  color: #ea868f;
+  background: #2c0b0e;
+  border: 1px solid #842029;
+  padding: 10px;
+  transition: 1s;
+}
+
+#alert{
+  display: none !important;
+}
+
+#alert.visible{
+  display: flex !important;
+}
+
+#alert.animate{
+  animation: alert 0.5s forwards;
 }

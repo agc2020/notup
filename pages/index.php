@@ -12,6 +12,30 @@
   <title>Notup</title>
 </head>
 <body>
+  <?php 
+    require_once '../php/db_connect.php';
+    $sql = "SELECT * FROM Usuarios WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    session_start();
+    $stmt->bind_param("s", $_SESSION['email']);
+    
+    if (!$stmt->execute()) {
+      http_response_code(500);
+      echo "Erro ao executar a consulta.";
+      setcookie("Error", "Error executing the query.", time()+3, "/");
+      header("Location: /notup/pages/auth.html");
+      exit;
+    }
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+    }
+    if(!$row){
+      setcookie("Error", "User not logged.", time()+3, "/");
+      header("Location: /notup/pages/auth.html");
+    }
+  ?>
+
   <div class="top_bar">
     <img src="../public/logo_notup.png" alt="logo_notup">
     <nav></nav>
@@ -23,7 +47,7 @@
           <span class="material-symbols-outlined">settings</span>
           <p>settings</p>
         </a>
-        <a class="option">
+        <a href="logout.php" class="option">
           <span class="material-symbols-outlined">logout</span>
           <p>logout</p>
         </a>
